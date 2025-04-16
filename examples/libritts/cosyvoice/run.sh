@@ -3,11 +3,19 @@
 . ./path.sh || exit 1;
 
 stage=-1
-stop_stage=3
+stop_stage=-1
 
 data_url=www.openslr.org/resources/60
-data_dir=/mnt/lyuxiang.lx/data/tts/openslr/libritts
-pretrained_model_dir=../../../pretrained_models/CosyVoice-300M
+
+# container path
+data_dir=/root/open-avatar-chat/app/data/tts/openslr/libritts
+if ! [ -d $data_dir ]
+then
+    mkdir -p $data_dir
+fi
+
+# container path
+pretrained_model_dir=/root/open-avatar-chat/app/data/pretrained_models/CosyVoice-300M
 
 if [ ${stage} -le -1 ] && [ ${stop_stage} -ge -1 ]; then
   echo "Data Download"
