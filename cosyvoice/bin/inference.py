@@ -62,7 +62,7 @@ def main():
     with open(args.config, 'r') as f:
         configs = load_hyperpyyaml(f)
 
-    model = CosyVoiceModel(configs['llm'], configs['flow'], configs['hift'])
+    model = CosyVoiceModel(configs['llm'], configs['flow'], configs['hift'], True)
     model.load(args.llm_model, args.flow_model, args.hifigan_model)
 
     test_dataset = Dataset(args.prompt_data, data_pipeline=configs['data_pipeline'], mode='inference', shuffle=False, partition=False,
